@@ -9,9 +9,9 @@ pipeline {
         stage('Docker Container'){
             steps {
                 sh '''
-                    docker system prune -a --volumes -f
-                    docker compose up -d
-                    docker compose ps
+                    docker build -t newimg .
+                    docker run -itd --name newcont -p 8090:80 newimg
+                    docker ps
                    '''
             }
         }
