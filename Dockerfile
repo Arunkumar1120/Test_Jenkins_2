@@ -1,4 +1,4 @@
-FROM httpd
+FROM nginx
 RUN apt-get update -y
-COPY staticwebsite.html /usr/local/apache2/htdocs/index.html
+COPY staticwebsite.html /usr/share/nginx/html/index.html
 EXPOSE 80
