@@ -8,8 +8,10 @@ pipeline {
         }
         stage('Docker Container'){
             steps {
-                sh 'docker build -t hackerarun/newapp .'
-                sh 'docker run -itd --name newappcont -p 8082:80 hackerarun/newapp'
+                sh '''
+                    docker build -t hackerarun/newapp .
+                    docker run -itd --name newappcont -p 8082:80 hackerarun/newapp
+                   '''
             }
         }
     }
