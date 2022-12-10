@@ -9,8 +9,9 @@ pipeline {
         stage('Docker Container'){
             steps {
                 sh '''
-                    docker build -t hackerarun/newapp .
-                    docker run -itd --name newappcont -p 8082:80 hackerarun/newapp
+                    docker system prune -a --volumes -f
+                    docker compose up -d
+                    docker compose ps
                    '''
             }
         }
