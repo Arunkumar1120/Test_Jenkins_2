@@ -11,12 +11,14 @@ pipeline {
         }
        stage('Docker-Container'){
 	   steps {
+	     if(${Docker}==Docker-Container){
                 sh '''
                     docker build -t newimg .
                     docker run -itd --name newcont -p 8090:80 newimg
                     docker ps
                    '''
 		  }
+	        }
 	     }
       stage('Docker Compose Container'){
             steps {
