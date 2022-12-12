@@ -15,5 +15,15 @@ pipeline {
                    '''
             }
         }
+        stage('Docker Container Clean'){
+            steps {
+                sh 'docker system prune -a --volumes -f'
+            }
+        }
+        stage('Docker Container'){
+            steps {
+                sh 'docker compose up -d'
+            }
+        }
     }
 }
