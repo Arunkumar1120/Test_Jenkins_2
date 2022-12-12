@@ -21,7 +21,7 @@ pipeline {
 			  }
 		   }
         }
-    if (env.${Docker} == 'Docker-Compose')
+    if (${Docker} == 'Docker-Compose')
         {
         stage('Docker Container Clean'){
             steps {
