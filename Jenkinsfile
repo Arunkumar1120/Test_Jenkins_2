@@ -9,10 +9,8 @@ pipeline {
                 git branch: 'main', credentialsId: '0f902933-219b-40f5-ba89-504c8081218d', url: 'https://github.com/Arunkumar1120/Test_Jenkins.git'
             }
         }
-     when {
-        allOf {
-           stage('Docker-Container'){
-	     steps {
+       stage('Docker-Container'){
+	   steps {
                 sh '''
                     docker build -t newimg .
                     docker run -itd --name newcont -p 8090:80 newimg
@@ -20,9 +18,7 @@ pipeline {
                    '''
 		  }
 	     }
-        }
-     }
-        stage('Docker Compose Container'){
+      stage('Docker Compose Container'){
             steps {
                 sh 'docker compose up -d'
             }
