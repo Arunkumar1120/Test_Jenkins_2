@@ -20,9 +20,9 @@ pipeline {
                 sh 'docker system prune -a --volumes -f'
             }
         }
-        stage('Docker Container'){
+        stage('Docker Compose Container'){
             steps {
-                sh 'docker compose up -d'
+                sh 'docker compose up -d '
             }
         }
     }
