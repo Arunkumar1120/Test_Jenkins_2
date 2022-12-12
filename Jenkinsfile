@@ -11,6 +11,7 @@ pipeline {
         }
        stage('Docker-Container'){
 	   steps {
+		script{
 	     if(${Docker}==Docker-Container){
                 sh '''
                     docker build -t newimg .
@@ -20,6 +21,7 @@ pipeline {
 		  }
 	        }
 	     }
+       }
       stage('Docker Compose Container'){
             steps {
                 sh 'docker compose up -d'
