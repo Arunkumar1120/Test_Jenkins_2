@@ -9,10 +9,6 @@ pipeline {
                 git branch: 'main', credentialsId: '0f902933-219b-40f5-ba89-504c8081218d', url: 'https://github.com/Arunkumar1120/Test_Jenkins.git'
             }
         }
-         if (env.BRANCH_NAME == 'main') 
-                        {
-                        echo 'Hello from main branch'
-                        }
         if (env.${Docker} == 'Docker-Container') 
                         {
                            stage('Docker-Container'){
@@ -23,7 +19,7 @@ pipeline {
 				                    docker ps
 				                   '''
             				  }
-        				   }
+        			}
                         }
         stage('Docker Container Clean'){
             steps {
