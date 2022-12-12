@@ -9,8 +9,8 @@ pipeline {
                 git branch: 'main', credentialsId: '0f902933-219b-40f5-ba89-504c8081218d', url: 'https://github.com/Arunkumar1120/Test_Jenkins.git'
             }
         }
-    if (${Docker} == 'Docker-Container')
-        {
+     when {
+        allOf {
            stage('Docker-Container'){
 	     steps {
                 sh '''
@@ -18,17 +18,10 @@ pipeline {
                     docker run -itd --name newcont -p 8090:80 newimg
                     docker ps
                    '''
-			  }
-		   }
+		  }
+	     }
         }
-    if (${Docker} == 'Docker-Compose')
-        {
-        stage('Docker Container Clean'){
-            steps {
-                sh 'docker system prune -a --volumes -f'
-            }
-        }
-    }
+     }
         stage('Docker Compose Container'){
             steps {
                 sh 'docker compose up -d'
